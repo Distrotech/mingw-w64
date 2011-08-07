@@ -1,0 +1,281 @@
+2011-07-23  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* winnt.h (C_ASSERT): Revert the EXTERN_C change from rev.4285/4286.
+	* usbioctl.h: Remove the extern "C" {} from the header completely.
+	There are no functions or variables are declared, only data types,
+	therefore it is not needed.
+	* dbghelp.h, psdk_inc/_dbg_common.h: move the extern "C" braces so
+	that the C_ASSERTs are not contained within them. (bug #3373905.)
+
+2011-07-23  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* winnt.h: Move the intrin.h include before the __faststorefence
+	inline. Remove the redundant prototype for _m_prefetchw() which
+	is already in intrin.h.
+
+2011-07-21  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* winnt.h (C_ASSERT): Define using EXTERN_C instead of extern.
+	* ws2tcpip.h: Move the extern "C" closing brace to cover the IN6_
+	prototypes.
+
+2011-06-23  Kai Tietz  <ktietz@redhat.com>
+
+	* basetyps.h (DECLARE_INTERFACE_IID_): New macro.
+	* objbase.h: Likewise.
+
+2011-06-21  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* d2d1.h: Remove redundant declarations.
+	* dwrite.h: New.
+	* dcommon.h: New.
+
+2011-06-15  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* wincon.h(ENABLE_INSERT_MODE): Define.
+	(ENABLE_QUICK_EDIT_MODE): Define.
+	(ENABLE_EXTENDED_FLAGS): Define.
+	(ENABLE_AUTO_POSITION): Define.
+	(GetConsoleOriginalTitleA): Make DLLIMPORT.
+	(GetConsoleOriginalTitleW): Likewise.
+	(GetConsoleScreenBufferInfoEx): Likewise.
+	(GetCurrentConsoleFontEx): Likewise.
+	(SetConsoleHistoryInfo): Likewise.
+	(SetCurrentConsoleFontEx): Likewise.
+
+2011-06-09  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* winevt.h: Fix the EVT_HANDLE type and move it before its users.
+	* eaptypes.h: Fix the EAP_SESSIONID type.
+	* mfapi.h: Fix the MFWORKITEM_KEY type.
+	* cryptxml.h (CRYPT_XML_CRYPTOGRAPHIC_INTERFACE): Remove a fixme note
+	because the guessed type is correct.
+	* cryptxml.h: Fix the HCRYPTXML type. Remove the non-existent HXML
+	type, make CryptXmlClose() to use HCRYPTXML parm.
+	* bdatypes.h: Fix the ScanModulationTypes enumeration and uncomment it.
+	* propidl.h: Fix the he REFPROPVARIANT type.
+	* mfobjects.h: Fix the MediaEventType type; remove a duplicated
+	definition of REFPROPVARIANT.
+	* clfsw32.h: Fix PFILE type. Fix CLFS_PRINT_RECORD_ROUTINE callback
+	type.
+	* wdspxe.h: Fix PXE_BOOT_ACTION type.
+	* netioapi.h: Fix PIPINTERFACE_CHANGE_CALLBACK type.
+	* bdatypes.h (FECMethod): Fix the BDA_FEC_MAX enumerated value.
+
+2011-06-09  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* locationapi.h(IID_ILocationReport): Define.
+	(IID_ICivicAddressReport): Define.
+	(IID_IDefaultLocation): Define.
+	(ILocationReport): Fix COM ordering.
+	(ICivicAddressReport): Likewise.
+	(IDefaultLocation): Likewise.
+
+2011-06-09  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* mpeg2psiparser.h: New.
+	* audiopolicy.h: New.
+	* d2d1helper.h(HwndRenderTargetProperties): Declare.
+	* identitystore.h: New.
+	* audioengineendpoint.h(HNSTIME): Define.
+	(IAudioDeviceEndpoint): Declare.
+	(IAudioEndpoint): Declare.
+	(IAudioEndpointControl): Declare.
+	(IAudioEndpointRT): Declare.
+	(IAudioEndpointVolumeEx): Declare.
+	(IAudioInputEndpointRT): Declare.
+	(IAudioOutputEndpointRT): Declare.
+	* audioapotypes.h: Use double underscores as define guards.
+	* wincred(CREDUIWIN_GENERIC): Define.
+	(CREDUIWIN_CHECKBOX): Define.
+	(CREDUIWIN_AUTHPACKAGE_ONLY): Define.
+	(CREDUIWIN_IN_CRED_ONLY): Define.
+	(CREDUIWIN_ENUMERATE_ADMINS): Define.
+	(CREDUIWIN_ENUMERATE_CURRENT_USER): Define.
+	(CREDUIWIN_SECURE_PROMPT): Define.
+	(CREDUIWIN_PACK_32_WOW): Define.
+	* winnt.h:(HARDWARE_COUNTER_DATA): Define.
+	(PERFORMANCE_DATA): Define.
+	* winsync.h: New.
+	* mpeg2structs.h: New.
+	* identitycommon.h: New.
+	* audioclient.h: New.
+	* portabledeviceconnectapi.h: New.
+	* devpkey.h: New.
+	* bdaiface.h: New.
+	* dvbsiparser.h: New.
+	* tuner.h: New.
+	* bdatypes.h(BinaryConvolutionCodeRate): Update.
+	(FECMethod): Update.
+	(ModulationType): Update.
+	(TransmissionMode): Update.
+	(BDA_Comp_Flags): Define.
+	(BDA_CONDITIONALACCESS_MMICLOSEREASON): Define.
+	(BDA_CONDITIONALACCESS_REQUESTTYPE): Define.
+	(MUX_PID_TYPE): Define.
+	(Pilot): Define.
+	(RollOff): Define.
+	(LNB_Source): Define.
+	(BDA_ISDBCAS_EMG_REQ): Define.
+	(BDA_MUX_PIDLISTITEM): Define.
+	* wtypes.h(REFPROPERTYKEY): Define.
+	* audiosessiontypes: New.
+	* http.h(HTTP_SERVICE_CONFIG_CACHE_PARAM): Define.
+	(HTTP_SERVICE_CONFIG_CACHE_SET): Define.
+	* mpeg2bits.h: new.
+	* devicetopology.h: new.
+	* mmdeviceapi.h: new.
+	* endpointvolume.h: new.
+	* locationapi.h: new.
+	* sbe.h: new.
+	* bdamedia.h(PBDAParentalControlPolicy): Define.
+	(SignalAndServiceStatusSpanningEvent_State): Define.
+	(DualMonoInfo): Define.
+	(DVBScramblingControlSpanningEvent): Define.
+	(LanguageInfo): Define.
+	(PBDAParentalControl): Define.
+	(PIDListSpanningEvent): Define.
+	(SpanningEventDescriptor): Define.
+	(SpanningEventEmmMessage): Define.
+	* strmif.h(IAMAsyncReaderTimestampScaling): Define.
+	(IAMPluginControl): Define.
+	* propidl.h(REFPROPVARIANT): Define.
+	* ksmedia.h(TunerLockType): Define.
+	* mpeg2data.h: New.
+
+2011-06-06  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* winnt.h (SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION): Define.
+	* winbase.h (GetNumaNodeNumberFromHandle): Define.
+	(GetProcessGroupAffinity): Likewise.
+	(GetProcessorSystemCycleTime): Likewise.
+	(GetThreadErrorMode): Likewise.
+	(GetThreadGroupAffinity): Likewise.
+	(GetThreadIdealProcessorEx): Likewise.
+	(GetActiveProcessorCount): Likewise.
+	(GetActiveProcessorGroupCount): Likewise.
+	(GetCurrentProcessorNumberEx): Likewise.
+	(GetMaximumProcessorCount): Likewise.
+	(GetMaximumProcessorGroupCount): Likewise.
+	(GetCurrentUmsThread): Likewise.
+	* winnls.h (VerifyScripts): Make WINAPI.
+	(GetProcessPreferredUILanguages): Define.
+	* virtdisk.h (VIRTDISKAPI): Define.
+	(AttachVirtualDisk): Make DLLIMPORT.
+	(CompactVirtualDisk): Likewise.
+	(CreateVirtualDisk): Likewise.
+	(DetachVirtualDisk): Likewise.
+	(ExpandVirtualDisk): Likewise.
+	(GetStorageDependencyInformation): Likewise.
+	(GetVirtualDiskInformation): Likewise.
+	(GetVirtualDiskOperationProgress): Likewise.
+	(MergeVirtualDisk): Likewise.
+	(OpenVirtualDisk): Likewise.
+	(SetVirtualDiskInformation): Likewise.
+	* winuser.h (CreateDesktopExA): Make DLLIMPORT.
+	(CreateDesktopExW): Likewise.
+	(ShutdownBlockReasonCreate): Likewise.
+	(ShutdownBlockReasonDestroy): Likewise.
+	(ShutdownBlockReasonQuery): Likewise.
+	(SetGestureConfig): Likewise.
+	(GetGestureConfig): Likewise.
+	(GetGestureInfo): Likewise.
+	(GetGestureExtraArgs): Likewise.
+	(CloseGestureInfoHandle): Likewise.
+
+2011-06-02  Dongsheng Song  <dongsheng.song@gmail.com>
+
+	* mstcpip.h: Mark declarations available on XP SP3 and above.
+
+2011-04-27  Jose Fonseca  <jrfonseca@users.sourceforge.net>
+
+	* wingdi.h (WINGDIAPI): When _GDI32_ is defined, define as nothing.
+
+2011-04-21  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* winnt.h (WOW64_CONTEXT_i386): Define.
+	(WOW64_CONTEXT_i486): Likewise.
+	(WOW64_CONTEXT_CONTROL): Likewise.
+	(WOW64_CONTEXT_INTEGER): Likewise.
+	(WOW64_CONTEXT_SEGMENTS): Likewise.
+	(WOW64_CONTEXT_FLOATING_POINT): Likewise.
+	(WOW64_CONTEXT_DEBUG_REGISTERS): Likewise.
+	(WOW64_CONTEXT_EXTENDED_REGISTERS): Likewise.
+	(WOW64_CONTEXT_FULL): Likewise.
+	(WOW64_CONTEXT_ALL): Likewise.
+	(WOW64_SIZE_OF_80387_REGISTERS): Likewise.
+	(WOW64_MAXIMUM_SUPPORTED_EXTENSION): Likewise.
+	(WOW64_FLOATING_SAVE_AREA): Declare.
+	(WOW64_CONTEXT): Likewise.
+	(WOW64_LDT_ENTRY): Likewise.
+
+2011-04-11  Kai Tietz  <ktietz70@googlemail.com>
+
+	* bcrypt.h, lmaccess.h, ntsecapi.h, subauth.h, wincred.h:
+	Guard NTSTATUS/PNTSTATUS typedef additionally by _NTSTATUS_PSDK.
+	* hidpi.h: Typedef NTSTATUS and PNTSTATUS.
+
+2011-04-11  Simon Josefsson  <simon@joseffson.org>
+
+	* hidsdi.h: New.
+
+2011-04-08  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* ksmedia.h:  Guard the SPEAKER_* macros by _SPEAKER_POSITIONS_
+	like in mmreg.h.
+
+2011-03-02  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* winuser.h (TOUCHEVENTF_MOVE): Fix value as 0x01 acc.to msdn.
+	(TOUCHEVENTF_DOWN): Fix value as 0x02 acc.to msdn.
+
+2011-01-29  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* dxva2api.h (DXVA2_ProcAmp_None): Define.
+	(DXVA2_ProcAmp_Brightness): Likewise.
+	(DXVA2_ProcAmp_Contrast): Likewise.
+	(DXVA2_ProcAmp_Hue): Likewise.
+	(DXVA2_ProcAmp_Saturation): Likewise.
+	* mfapi.h (MFScheduleWorkItemEx): New function declaration.
+	* opmapi.h (OPM_CGMSA_OFF): Define.
+	(OPM_CGMSA_COPY_FREELY): Likewise.
+	(OPM_CGMSA_COPY_NO_MORE): Likewise.
+	(OPM_CGMSA_COPY_ONE_GENERATION): Likewise.
+	(OPM_CGMSA_COPY_NEVER): Likewise.
+	(OPM_CGMSA_REDISTRIBUTION_CONTROL_REQUIRED): Likewise.
+	(OPM_PROTECTION_STANDARD_OTHER): Likewise.
+	(OPM_PROTECTION_STANDARD_NONE): Likewise.
+	(OPM_PROTECTION_STANDARD_IEC61880_525I): Likewise.
+	(OPM_PROTECTION_STANDARD_IEC61880_2_525I): Likewise.
+	(OPM_PROTECTION_STANDARD_IEC62375_625P): Likewise.
+	(OPM_PROTECTION_STANDARD_EIA608B_525): Likewise.
+	(OPM_PROTECTION_STANDARD_EN300294_625I): Likewise.
+	(OPM_PROTECTION_STANDARD_CEA805A_TYPEA_525P): Likewise.
+	(OPM_PROTECTION_STANDARD_CEA805A_TYPEA_750P): Likewise.
+	(OPM_PROTECTION_STANDARD_CEA805A_TYPEA_1125I): Likewise.
+	(OPM_PROTECTION_STANDARD_CEA805A_TYPEB_525P): Likewise.
+	(OPM_PROTECTION_STANDARD_CEA805A_TYPEB_750P): Likewise.
+	(OPM_PROTECTION_STANDARD_CEA805A_TYPEB_1125I): Likewise.
+	(OPM_PROTECTION_STANDARD_ARIBTRB15_525I): Likewise.
+	(OPM_PROTECTION_STANDARD_ARIBTRB15_525P): Likewise.
+	(OPM_PROTECTION_STANDARD_ARIBTRB15_750P): Likewise.
+	(OPM_PROTECTION_STANDARD_ARIBTRB15_1125I): Likewise.
+	* mfidl.h (IMFByteStreamHandler): New interface declaration.
+
+2011-01-17  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* winuser.h (WM_MOUSEHWHEEL): Define.
+
+2011-01-14  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* winsplp.h (MONITOR2): Fixes according to msdn documentation at
+	http://msdn.microsoft.com/en-us/library/ff557532(VS.85).aspx
+	thanks to a reminder from Lorenzo Monti. Closes patch tracker ID
+	3157986.
+
+2011-01-07  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* wincrypt.h (CertSelectCertificateChains): Fix typo.
+	* objbase.h (CoDisconnectContext): Likewise.
+	(CoGetApartmentType): Likewise.
+

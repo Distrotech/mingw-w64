@@ -1,0 +1,155 @@
+2011-07-23  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* lib32/vfw32.mri: Adjust for lib32 subdirectory.
+	* lib32/vfw64.mri: New.
+	* Makefile.am: Generate libvfw32.a using vfw32.mri.
+	* Makefile.in: Regenerate.
+
+2011-05-31  Kai Tietz  <kai.tietz@onevision.com>
+
+	* crt/pesect.c, crt/pseudo-reloc.c: Optimize pseudo-relocation
+	code and prevent multiple temporary write-access settings on same
+	section.
+
+2011-05-26  Dongsheng Song  <dongsheng@users.sourceforge.net>:
+
+	* lib32/msvcr90.def (__report_gsfailure, _assert, _byteswap_uint64,
+	_byteswap_ulong, _byteswap_ushort, _ctime32, _decode_pointer, _difftime32,
+	_difftime64, _encode_pointer, _findfirst64i32, _findnext64i32, _fpreset,
+	_fseeki64, _fstat64i32, _ftelli64, _get_errno, _gmtime32, _localtime32,
+	_mkgmtime32, _mktime32, _rotl64, _rotr64, _set_errno, _stat64i32, _time32,
+	_wassert, _wctime32, _wfindfirst64i32, _wfindnext64i32, _wstat64i32, atexit,
+	btowc, cos, exp, fabs, fmod, log, mbrlen, mbrtowc, mbsrtowcs, modf, pow, sin,
+	sqrt, strnlen, wcrtomb, wcsnlen, wcsrtombs, wctob): Mark as DATA.
+
+	* lib64/msvcr90.def (__report_gsfailure, _assert, _byteswap_uint64,
+	_byteswap_ulong, _byteswap_ushort, _ctime32, _decode_pointer, _difftime32,
+	_difftime64, _encode_pointer, _findfirst64i32, _findnext64i32, _fpreset,
+	_fseeki64, _fstat64i32, _ftelli64, _get_errno, _gmtime32, _localtime32,
+	_mkgmtime32, _mktime32, _rotl64, _rotr64, _set_errno, _stat64i32, _time32,
+	_wassert, _wctime32, _wfindfirst64i32, _wfindnext64i32, _wstat64i32, acosf,
+	asinf, atan2f, atanf, atexit, btowc, ceilf, cos, cosf, coshf, exp, expf,
+	fabs, floorf, fmod, fmodf, log, log10f, logf, mbrlen, mbrtowc, mbsrtowcs,
+	modf, modff, pow, powf, sin, sinf, sinhf, sqrt, sqrtf, strnlen, tanf, tanhf,
+	wcrtomb, wcsnlen, wcsrtombs, wctob): Likewise.
+
+2011-04-30  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* lib32/winscard.def (g_rgSCardRawPci): Remove stdcall suffix and
+	mark as DATA.
+	(g_rgSCardT0Pci): Likewise.
+	(g_rgSCardT1Pci): Likewise.
+
+2011-04-26  Ozkan Sezer  <sezeroz@gmail.com>
+
+	* gdtoa/gdtoa.c, gdtoa/gdtoa.h, gdtoa/gdtoaimp.h: Sync gdtoa to
+	match the latest version at netlib.org as of 2011-03-21.
+
+2011-04-02  Professor Brian Ripley  <ripley@stats.ox.ac.uk>
+
+	* math/expm1.def.h: Correct special case for |x| < loge2.
+
+2011-03-26  Kai Tietz  <ktietz70@googlemail.com>
+
+	* Makefile.am: Add new file.
+	* Makefile.in: Regenerated.
+	* lib32/msvcr*.def: Maked ldexp as DATA.
+	* lib64/msvcr*.def: Likewise.
+	* math/exp*: Make sure we are using round-to-zero.
+	* math/pow.def.h: Likewise.
+	* math/ldexp.c: New.
+
+2011-03-25  Kai Tietz  <ktietz70@googlemail.com>
+
+	* Makefile.am: Add new files to build.
+	* Makefile.in: Regenerated.
+	* misc/mempcpy.c: New.
+	* misc/wmempcpy.c: New.
+
+2011-03-15  Kai Tietz  <ktietz70@googlemail.com>
+
+	* math/exp.def.h: Use integer/fraction separation for improving
+	calculation precision.
+	* math/pow.def.h: Use log2l/exp2l and integer/fraction separation
+	for improving calculation precission.
+
+2011-03-12  Dongsheng Song  <dongsheng.song@gmail.com>:
+
+	* lib32/msvcr100.def (__report_gsfailure, _assert, _byteswap_uint64,
+	_byteswap_ulong, _byteswap_ushort, _ctime32, _difftime32,
+	_difftime64, _findfirst64i32, _findnext64i32, _fpreset, _fseeki64,
+	_fstat64i32, _ftelli64, _get_errno, _gmtime32, _localtime32,
+	_mkgmtime32, _mktime32, _rotl64, _rotr64, _set_errno, _stat64i32,
+	_time32, _wassert, _wctime32, _wfindfirst64i32, _wfindnext64i32,
+	_wstat64i32, atexit, btowc, cos, exp, fabs, fmod, llabs, lldiv,
+	log, longjmp, mbrlen, mbrtowc, mbsrtowcs, modf, pow, sin, sqrt,
+	strnlen, wcrtomb, wcsnlen, wcsrtombs, wctob): Mark as DATA.
+	* lib64/msvcr100.def (__report_gsfailure, _assert, _byteswap_uint64,
+	_byteswap_ulong, _byteswap_ushort, _ctime32, _difftime32,
+	_difftime64, _findfirst64i32, _findnext64i32, _fpreset, _fseeki64,
+	_fstat64i32, _ftelli64, _get_errno, _gmtime32, _localtime32,
+	_mkgmtime32, _mktime32, _rotl64, _rotr64, _set_errno, _stat64i32,
+	_time32, _wassert, _wctime32, _wfindfirst64i32, _wfindnext64i32,
+	_wstat64i32, acosf, asinf, atan2f, atanf, atexit, btowc, ceilf,
+	cos, cosf, coshf, exp, expf, fabs, floorf, fmod, fmodf, llabs,
+	lldiv, log, log10f, logf, longjmp, mbrlen, mbrtowc, mbsrtowcs,
+	modf, modff, pow, powf, sin, sinf, sinhf, sqrt, sqrtf, strnlen,
+	tanf, tanhf, wcrtomb, wcsnlen, wcsrtombs, wctob): Likewise.
+
+2011-02-04  Kai Tietz  <kai.tietz@onevision.com>
+
+	* stdio/mingw_fscanf.c: New.
+	* stdio/mingw_fwscanf.c: New.
+	* stdio/mingw_scanf.c: New.
+	* stdio/mingw_sscanf.c: New.
+	* stdio/mingw_swscanf.c: New.
+	* stdio/mingw_vfscanf.c: New.
+	* stdio/mingw_wscanf.c: New.
+	* stdio/mingw_wvfscanf.c: New.
+	* Makefile.am: Add new files.
+	* Makefile.in: Regenerated.
+
+2011-02-01  Kai Tietz  <kai.tietz@onevision.com>
+
+	* misc/mingw_wcstod.c: New.
+	* misc/mingw_wcstof.c: New.
+	* misc/mingw_wcstold.c: New.
+	* Makefile.am: Add new files to libmingex.a library.
+	* math/fastmath.h: Use for 64-bit SSE sqrt instruction.
+	* math/sqrt.c: Likewise.
+	* math/sqrt.def.h: Likewise.
+
+2011-01-29  Jonathan Yong  <jon_y@users.sourceforge.net>
+
+	* misc/mingw_mbwc_convert.c: New.
+
+2011-01-24  Kai Tietz  <kai.tietz@onevision.com>
+
+	* stdio/mingw_fprintfw.c: New.
+	* stdio/mingw_pformatw.c: New.
+	* stdio/mingw_vsprintfw.c: New.
+	* stdio/mingw_vprintfw.c: New.
+	* stdio/mingw_vfprintfw.c: New.
+	* stdio/mingw_snprintfw.c: New.
+	* stdio/mingw_sprintfw.c: New.
+	* stdio/mingw_vsnprintfw.c: New.
+	* stdio/mingw_printfw.c: New.
+	* stdio/mingw_fprintf.c: Support wide-char.
+	* stdio/mingw_pformat.c: Support wide-char.
+	* stdio/mingw_pformat.h: Support wide-char.
+	* stdio/mingw_vsprintf.c: Support wide-char.
+	* stdio/mingw_vprintf.c: Support wide-char.
+	* stdio/mingw_vfprintf.c: Support wide-char.
+	* stdio/mingw_snprintf.c: Support wide-char.
+	* stdio/mingw_sprintf.c: Support wide-char.
+	* stdio/mingw_vsnprintf.c: Support wide-char.
+	* stdio/mingw_printf.c: Support wide-char.
+
+2011-01-10  Tsukasa Ooi  <li@livegrid.org>
+
+	* crt/crtexe.c: Fix invalid scope table for SEH.
+
+2011-01-10  Tsukasa Ooi  <li@livegrid.org>
+
+	* crt/crtexe.c: Fix invalid scope table for SEH.
+
